@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleSend", "SimpleSend\SimpleSend.csproj", "{1CEE3A61-86D5-498A-AD06-13C434F37EBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. SimpleSend", "SimpleSend\1. SimpleSend.csproj", "{1CEE3A61-86D5-498A-AD06-13C434F37EBC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Messages\Messages.csproj", "{7F64800F-235D-4BD7-A98D-4C23216BF851}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleReceive", "SimpleReceive\SimpleReceive.csproj", "{47D67B00-62B5-4313-9135-9D1583B33FE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. SimpleReceive", "SimpleReceive\1. SimpleReceive.csproj", "{47D67B00-62B5-4313-9135-9D1583B33FE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. TransactionalReceive", "TransactionalReceive\2. TransactionalReceive.csproj", "{90B3928B-9E55-406F-A8AA-C5BD2FC534A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. TransactionalSend", "TransactionalSend\2. TransactionalSend.csproj", "{120CE930-82C1-4EB0-A8A7-BAFF44E04C63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{47D67B00-62B5-4313-9135-9D1583B33FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47D67B00-62B5-4313-9135-9D1583B33FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47D67B00-62B5-4313-9135-9D1583B33FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90B3928B-9E55-406F-A8AA-C5BD2FC534A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90B3928B-9E55-406F-A8AA-C5BD2FC534A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90B3928B-9E55-406F-A8AA-C5BD2FC534A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90B3928B-9E55-406F-A8AA-C5BD2FC534A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{120CE930-82C1-4EB0-A8A7-BAFF44E04C63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{120CE930-82C1-4EB0-A8A7-BAFF44E04C63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{120CE930-82C1-4EB0-A8A7-BAFF44E04C63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{120CE930-82C1-4EB0-A8A7-BAFF44E04C63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
