@@ -174,6 +174,7 @@ namespace SimplePubSubBus
             {
                 try
                 {
+                    _incomingQueue.PeekCompleted -= Queue_PeekCompleted;
                     _incomingQueue.Dispose();
                 }
                 catch (Exception) { }
