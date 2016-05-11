@@ -19,13 +19,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. TypeBasedManufacturer", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. TypeBasedCentralCommand", "TypeBasedCentralCommand\3. TypeBasedCentralCommand.csproj", "{411C388A-6BFD-478D-AFCF-17320298139F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePubSubSend", "SimplePubSubSend\SimplePubSubSend.csproj", "{51567C94-4321-4C0B-AC6B-B3FDEBAA4E89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubSend", "SimplePubSubSend\4. SimplePubSubSend.csproj", "{51567C94-4321-4C0B-AC6B-B3FDEBAA4E89}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePubSubBus", "SimplePubSubBus\SimplePubSubBus.csproj", "{D224F42E-1577-427F-BDB9-35C10223776E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePubSubCentralCommand", "SimplePubSubCentralCommand\SimplePubSubCentralCommand.csproj", "{BE6E84A6-D459-4E3B-BEE0-449FE56230B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubCentralCommand", "SimplePubSubCentralCommand\4. SimplePubSubCentralCommand.csproj", "{BE6E84A6-D459-4E3B-BEE0-449FE56230B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePubSubManufacturer", "PubSubManufacturer\SimplePubSubManufacturer.csproj", "{411E637E-918C-40C0-B410-3C2B28285B1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubManufacturer", "PubSubManufacturer\4. SimplePubSubManufacturer.csproj", "{411E637E-918C-40C0-B410-3C2B28285B1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
