@@ -20,6 +20,7 @@ namespace SimpleTypeBasedRoutingSend
 
             var sender = new Sender();
 
+            // Mapping happens in sender. I.e. the sender MUST know where messages go.
             sender.MapTypeToQueue(typeof(InvadeCountryCommand), centralCommandAddress);
             sender.MapTypeToQueue(typeof(ManufactureTanksCommand), manufacturingAddress);
 
