@@ -17,6 +17,6 @@ namespace Messages
         }
 
         public string Title { get; set; }
-        public DateTime TimeSent { get; set; }
+        public DateTime TimeSent { get; set; } = DateTime.Now;
     }
 }
