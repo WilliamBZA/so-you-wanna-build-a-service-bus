@@ -8,7 +8,7 @@ namespace Messages.ControlMessages
 {
     public class Subscribe
     {
-        public Type MessageType { get; set; }
+        public string MessageType { get; set; }
         public string Address { get; set; }
     }
 }

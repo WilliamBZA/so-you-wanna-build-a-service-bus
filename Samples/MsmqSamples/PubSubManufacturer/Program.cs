@@ -7,27 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimplePubSubCentralCommand
+namespace SimplePubSubManufacturer
 {
     class Program
     {
         static void Main(string[] args)
         {
             var publisherAddress = @".\Private$\simplePubSubSendIncoming";
-            var incomingAddress = @".\Private$\simplePubSubSendCentralCommand";
+            var incomingAddress = @".\Private$\simplePubSubSendManufacturer";
 
             var bus = new Bus(incomingAddress);
-            bus.SubscribeToMessagesFrom<InvadeCountryCommand>(publisherAddress);
+            bus.SubscribeToMessagesFrom<ManufactureTanksCommand>(publisherAddress);
 
             Console.ReadLine();
         }
     }
 
-    public class CentralCommand : IHandle<InvadeCountryCommand>
+    public class Manufacturer : IHandle<ManufactureTanksCommand>
     {
-        public void Handle(InvadeCountryCommand message)
+        public void Handle(ManufactureTanksCommand message)
         {
-            Console.WriteLine("Invade {0} on {1}", message.CountryToInvade, message.InvasionDate);
+            Console.WriteLine("Must manufature {0} {1} tanks by {2}", message.NumberToManufacture, message.TankType, message.ManufactureByWhen);
         }
     }
 }

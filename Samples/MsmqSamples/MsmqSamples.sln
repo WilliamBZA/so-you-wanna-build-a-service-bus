@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePubSubSend", "SimpleP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePubSubBus", "SimplePubSubBus\SimplePubSubBus.csproj", "{D224F42E-1577-427F-BDB9-35C10223776E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePubSubCentralCommand", "SimplePubSubCentralCommand\SimplePubSubCentralCommand.csproj", "{BE6E84A6-D459-4E3B-BEE0-449FE56230B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePubSubManufacturer", "PubSubManufacturer\SimplePubSubManufacturer.csproj", "{411E637E-918C-40C0-B410-3C2B28285B1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{D224F42E-1577-427F-BDB9-35C10223776E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D224F42E-1577-427F-BDB9-35C10223776E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D224F42E-1577-427F-BDB9-35C10223776E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE6E84A6-D459-4E3B-BEE0-449FE56230B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE6E84A6-D459-4E3B-BEE0-449FE56230B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE6E84A6-D459-4E3B-BEE0-449FE56230B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE6E84A6-D459-4E3B-BEE0-449FE56230B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{411E637E-918C-40C0-B410-3C2B28285B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{411E637E-918C-40C0-B410-3C2B28285B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{411E637E-918C-40C0-B410-3C2B28285B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{411E637E-918C-40C0-B410-3C2B28285B1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

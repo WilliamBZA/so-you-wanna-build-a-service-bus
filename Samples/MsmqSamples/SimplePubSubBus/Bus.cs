@@ -33,6 +33,19 @@ namespace SimplePubSubBus
 
         }
 
+        public void SubscribeToMessagesFrom<T>(string fromAddress)
+        {
+            using (var tx = new MessageQueueTransaction())
+            {
+                using (var queue = new MessageQueue(fromAddress))
+                {
+                    tx.Begin();
+                    queue.Send(new Subscribe { MessageType = typeof(T).AssemblyQualifiedName, Address = _incomingQueue.Path }, tx);
+                    tx.Commit();
+                }
+            }
+        }
+
         private static void CheckQueueExists(string queueName)
         {
             if (!MessageQueue.Exists(queueName))
@@ -75,7 +88,7 @@ namespace SimplePubSubBus
 
         public void Handle(Subscribe message)
         {
-            MapTypeToQueue(message.MessageType, message.Address);
+            MapTypeToQueue(Type.GetType(message.MessageType), message.Address);
         }
 
         private void MapTypeToQueue(Type type, string queueAddress)
