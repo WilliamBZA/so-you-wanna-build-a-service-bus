@@ -40,12 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommenceInvasionCommand.cs" />
     <Compile Include="Contracts\IHandle.cs" />
+    <Compile Include="Contracts\Saga.cs" />
     <Compile Include="ControlMessages\Subscribe.cs" />
     <Compile Include="InvadeCountryCommand.cs" />
+    <Compile Include="InvasionForceReadyEvent.cs" />
     <Compile Include="ManufactureTanksCommand.cs" />
     <Compile Include="SimpleMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TanksManufacturedEvent.cs" />
+    <Compile Include="TroopsPreparedEvent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

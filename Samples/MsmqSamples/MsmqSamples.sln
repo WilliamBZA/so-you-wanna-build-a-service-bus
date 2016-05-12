@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubManufacturer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartingWithSagasBus", "StartingWithSagasBus\StartingWithSagasBus.csproj", "{3A028619-15E5-4120-B8C4-FDA40F5DFAE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaInvasionCoordinator", "SagaInvasionCoordinator\SagaInvasionCoordinator.csproj", "{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{3A028619-15E5-4120-B8C4-FDA40F5DFAE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A028619-15E5-4120-B8C4-FDA40F5DFAE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A028619-15E5-4120-B8C4-FDA40F5DFAE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

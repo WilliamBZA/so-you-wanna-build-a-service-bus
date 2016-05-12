@@ -1,5 +1,6 @@
 ﻿using Messages;
 using Messages.Contracts;
+using StartingWithSagasBus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,47 +17,57 @@ namespace SagaInvasionCoordinator
         }
     }
 
-    public class InvasionSaga : IHandle<InvadeCountryCommand>,
-        IHandle<ManufactureTanksCommand>
+    public class InvasionSaga : Saga<InvasionSagaData>,
+        IHandle<InvadeCountryCommand>,
+        IHandle<CommenceInvasionCommand>,
+        IHandle<TroopsPreparedEvent>,
+        IHandle<TanksManufacturedEvent>
     {
+        private Bus _bus;
+
         public void Handle(InvadeCountryCommand message)
         {
-            SetTimeout();
-            throw new NotImplementedException();
+            _bus.Send(new ManufactureTanksCommand { });
+            _bus.Send(new PrepareTroopsCommand { });
+
+            SetTimeout(message.InvasionDate.AddMonths(-1));
         }
 
-        private void SetTimeout()
+        public void Handle(TroopsPreparedEvent message)
         {
-            throw new NotImplementedException();
-        }
+            Data.TroopsReady = true;
 
-        public void Handle(ManufactureTanksCommand message)
-        {
-            throw new NotImplementedException();
+            if (Data.TanksReady)
+            {
+                _bus.Send(new InvasionForceReadyEvent { });
+            }
         }
 
         public void Handle(TanksManufacturedEvent message)
         {
+            Data.TanksReady = true;
 
+            if (Data.TroopsReady)
+            {
+                _bus.Send(new InvasionForceReadyEvent { });
+            }
         }
 
-        public /*override*/ void TimeTriggered(DateTime triggerTime)
+        public void Handle(CommenceInvasionCommand message)
         {
+            _bus.Send(new DeployArmyCommand { });
 
-            MarkAsAborted();
             MarkAsCompleted();
         }
 
-
-        // saga methods
-        private void MarkAsAborted()
+        public override void TimeoutTriggered(DateTime triggerTime)
         {
-            throw new NotImplementedException();
-        }
+            if (Data.TroopsReady && Data.TanksReady)
+            {
+                _bus.Send(new CancelInvasionCommand { });
+            }
 
-        private void MarkAsCompleted()
-        {
-            throw new NotImplementedException();
+            MarkAsCompleted();
         }
     }
 }
