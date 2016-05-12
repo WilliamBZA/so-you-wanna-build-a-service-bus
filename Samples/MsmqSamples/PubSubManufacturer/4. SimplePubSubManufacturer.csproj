@@ -54,9 +54,9 @@
       <Project>{7f64800f-235d-4bd7-a98d-4c23216bf851}</Project>
       <Name>Messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SimplePubSubBus\SimplePubSubBus.csproj">
+    <ProjectReference Include="..\SimplePubSubBus\4. SimplePubSubBus.csproj">
       <Project>{d224f42e-1577-427f-bdb9-35c10223776e}</Project>
-      <Name>SimplePubSubBus</Name>
+      <Name>4. SimplePubSubBus</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
