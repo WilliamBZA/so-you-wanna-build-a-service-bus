@@ -27,15 +27,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubCentralComma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubManufacturer", "PubSubManufacturer\4. SimplePubSubManufacturer.csproj", "{411E637E-918C-40C0-B410-3C2B28285B1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartingWithSagasBus", "StartingWithSagasBus\StartingWithSagasBus.csproj", "{3A028619-15E5-4120-B8C4-FDA40F5DFAE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. StartingWithSagasBus", "StartingWithSagasBus\5. StartingWithSagasBus.csproj", "{3A028619-15E5-4120-B8C4-FDA40F5DFAE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaInvasionCoordinator", "SagaInvasionCoordinator\SagaInvasionCoordinator.csproj", "{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaInvasionCoordinator", "SagaInvasionCoordinator\5. SagaInvasionCoordinator.csproj", "{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaChurchill", "SagaChurchill\5. SagaChurchill.csproj", "{C3A4D335-9460-4CB1-8C87-F38E2A5750A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaManufacturing", "SagaManufacturing\SagaManufacturing.csproj", "{13D5CB42-D084-4CF3-ACA2-D6EDEAD77CC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaManufacturing", "SagaManufacturing\5. SagaManufacturing.csproj", "{13D5CB42-D084-4CF3-ACA2-D6EDEAD77CC0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaCentralCommand", "SagaCentralCommand\5. SagaCentralCommand.csproj", "{30D0579C-8FC5-480C-ACE3-770073CB6A4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6. RecoverySend", "RecoverySend\6. RecoverySend.csproj", "{8DB8BB06-1C82-4A73-AEC5-A7DBF954EA4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6. RecoveryReceive", "RecoveryReceive\6. RecoveryReceive.csproj", "{83976A7A-AF5C-4E27-A56E-3D0E7803A130}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6. RecoveryBus", "RecoveryBus\6. RecoveryBus.csproj", "{CC1A0B1E-53E8-4BC2-BE75-19A8B591FD82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +117,18 @@ Global
 		{30D0579C-8FC5-480C-ACE3-770073CB6A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30D0579C-8FC5-480C-ACE3-770073CB6A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30D0579C-8FC5-480C-ACE3-770073CB6A4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB8BB06-1C82-4A73-AEC5-A7DBF954EA4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB8BB06-1C82-4A73-AEC5-A7DBF954EA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB8BB06-1C82-4A73-AEC5-A7DBF954EA4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB8BB06-1C82-4A73-AEC5-A7DBF954EA4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83976A7A-AF5C-4E27-A56E-3D0E7803A130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83976A7A-AF5C-4E27-A56E-3D0E7803A130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83976A7A-AF5C-4E27-A56E-3D0E7803A130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83976A7A-AF5C-4E27-A56E-3D0E7803A130}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC1A0B1E-53E8-4BC2-BE75-19A8B591FD82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1A0B1E-53E8-4BC2-BE75-19A8B591FD82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1A0B1E-53E8-4BC2-BE75-19A8B591FD82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1A0B1E-53E8-4BC2-BE75-19A8B591FD82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
