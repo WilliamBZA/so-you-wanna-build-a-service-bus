@@ -31,11 +31,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartingWithSagasBus", "Sta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaInvasionCoordinator", "SagaInvasionCoordinator\SagaInvasionCoordinator.csproj", "{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaChurchill", "SagaChurchill\SagaChurchill.csproj", "{C3A4D335-9460-4CB1-8C87-F38E2A5750A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaChurchill", "SagaChurchill\5. SagaChurchill.csproj", "{C3A4D335-9460-4CB1-8C87-F38E2A5750A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaManufacturing", "SagaManufacturing\SagaManufacturing.csproj", "{13D5CB42-D084-4CF3-ACA2-D6EDEAD77CC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaCentralCommand", "SagaCentralCommand\SagaCentralCommand.csproj", "{30D0579C-8FC5-480C-ACE3-770073CB6A4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaCentralCommand", "SagaCentralCommand\5. SagaCentralCommand.csproj", "{30D0579C-8FC5-480C-ACE3-770073CB6A4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
