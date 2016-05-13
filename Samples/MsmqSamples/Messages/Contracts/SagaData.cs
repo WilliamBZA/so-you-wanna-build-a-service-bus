@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Messages
+namespace Messages.Contracts
 {
-    public class TanksManufacturedEvent
+    public abstract class SagaData
     {
         public Guid SagaId { get; set; }
     }

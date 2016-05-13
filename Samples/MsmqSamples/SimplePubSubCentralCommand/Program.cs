@@ -19,6 +19,7 @@ namespace SimplePubSubCentralCommand
             var bus = new Bus(incomingAddress);
             bus.SubscribeToMessagesFrom<InvadeCountryCommand>(publisherAddress);
 
+            Console.WriteLine("Subscriptions complete");
             Console.ReadLine();
         }
     }

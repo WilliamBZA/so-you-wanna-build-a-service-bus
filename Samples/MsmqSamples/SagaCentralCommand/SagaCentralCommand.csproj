@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}</ProjectGuid>
+    <ProjectGuid>{30D0579C-8FC5-480C-ACE3-770073CB6A4B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SagaInvasionCoordinator</RootNamespace>
-    <AssemblyName>SagaInvasionCoordinator</AssemblyName>
+    <RootNamespace>SagaCentralCommand</RootNamespace>
+    <AssemblyName>SagaCentralCommand</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InvasionSagaData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

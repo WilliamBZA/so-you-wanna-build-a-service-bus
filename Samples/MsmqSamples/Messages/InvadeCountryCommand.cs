@@ -11,5 +11,6 @@ namespace Messages
         public DateTime TimeSent { get; set; } = DateTime.Now;
         public string CountryToInvade { get; set; }
         public DateTime InvasionDate { get; set; }
+        public Guid SagaId { get; set; }
     }
 }

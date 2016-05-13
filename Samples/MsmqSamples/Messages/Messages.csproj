@@ -40,13 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CancelInvasionCommand.cs" />
     <Compile Include="CommenceInvasionCommand.cs" />
     <Compile Include="Contracts\IHandle.cs" />
     <Compile Include="Contracts\Saga.cs" />
+    <Compile Include="Contracts\SagaData.cs" />
     <Compile Include="ControlMessages\Subscribe.cs" />
+    <Compile Include="DeployArmyCommand.cs" />
     <Compile Include="InvadeCountryCommand.cs" />
     <Compile Include="InvasionForceReadyEvent.cs" />
     <Compile Include="ManufactureTanksCommand.cs" />
+    <Compile Include="PrepareTroopsCommand.cs" />
     <Compile Include="SimpleMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TanksManufacturedEvent.cs" />

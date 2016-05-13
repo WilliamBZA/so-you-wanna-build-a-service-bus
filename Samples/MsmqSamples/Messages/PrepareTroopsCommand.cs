@@ -8,5 +8,8 @@ namespace Messages
 {
     public class PrepareTroopsCommand
     {
+        public DateTime InvasionDate { get; set; }
+        public int NumberOfTroops { get; set; }
+        public Guid SagaId { get; set; }
     }
 }

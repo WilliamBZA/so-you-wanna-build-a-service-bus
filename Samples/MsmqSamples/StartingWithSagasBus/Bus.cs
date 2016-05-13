@@ -14,12 +14,14 @@ namespace StartingWithSagasBus
     {
         private Dictionary<Type, List<string>> _typeMappings;
         private Dictionary<Type, List<Type>> _incomingHandlers;
+        private Dictionary<Guid, SagaData> _sagaData;
         private List<dynamic> _handlerInstances;
         private MessageQueue _incomingQueue;
 
         public Bus(string incomingAddress)
         {
             _typeMappings = new Dictionary<Type, List<string>>();
+            _sagaData = new Dictionary<Guid, SagaData>();
             _handlerInstances = new List<dynamic>() { this.AsDynamic() };
 
             LoadHandlers();
@@ -32,7 +34,6 @@ namespace StartingWithSagasBus
 
             _incomingQueue.PeekCompleted += Queue_PeekCompleted;
             _incomingQueue.BeginPeek();
-
         }
 
         public void SubscribeToMessagesFrom<T>(string fromAddress)
@@ -63,29 +64,12 @@ namespace StartingWithSagasBus
             _incomingHandlers = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
                                  where assembly != typeof(DateTime).Assembly
                                  from type in assembly.GetTypes()
-                                 where IsHandler(type)
+                                 where IsImplementationOf(handleType, type)
                                  select new
                                  {
                                      HandlerType = type,
                                      Handles = type.GetInterfaces().Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == handleType).Select(i => i.GenericTypeArguments.First())
                                  }).ToDictionary(h => h.HandlerType, h => h.Handles.ToList());
-        }
-
-        private bool IsHandler(Type type)
-        {
-            var handleType = typeof(IHandle<>);
-
-            if (handleType == type)
-            {
-                return false;
-            }
-
-            if (handleType.IsAssignableFrom(type))
-            {
-                return true;
-            }
-
-            return (type.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == handleType));
         }
 
         public void Handle(Subscribe message)
@@ -139,6 +123,31 @@ namespace StartingWithSagasBus
 
                 foreach (var handler in handlers)
                 {
+                    // if handler is saga and message.Body contains SagaId, populate data
+                    if (IsImplementationOf(typeof(Saga<>), handler))
+                    {
+                        var bodyType = message.Body.GetType();
+                        var sagaIdProperty = bodyType.GetProperties().FirstOrDefault(pi => pi.Name == "SagaId");
+                        if (sagaIdProperty != null)
+                        {
+                            var sagaId = (Guid)sagaIdProperty.GetValue(message.Body);
+                            if (sagaId != Guid.Empty)
+                            {
+                                if (!_sagaData.ContainsKey(sagaId))
+                                {
+                                    var sagaDataType = GetSagaDataTypeFor((Type)handler.RealObject.GetType());
+
+                                    var instance = Activator.CreateInstance(sagaDataType);
+                                    instance.AsDynamic().SagaId = sagaId;
+
+                                    _sagaData.Add(sagaId, (SagaData)instance);
+                                }
+
+                                handler.Data = _sagaData[sagaId];
+                            }
+                        }
+                    }
+
                     handler.Handle(message.Body);
                 }
 
@@ -146,6 +155,38 @@ namespace StartingWithSagasBus
             }
 
             queue.BeginPeek();
+        }
+
+        private Type GetSagaDataTypeFor(Type sagaType)
+        {
+            var sagaDataType = typeof(SagaData);
+
+            return sagaType.BaseType.GenericTypeArguments.FirstOrDefault(type => sagaDataType.IsAssignableFrom(type));
+        }
+
+        private bool IsImplementationOf(Type expectedType, Type currentType)
+        {
+            if (expectedType == currentType)
+            {
+                return false;
+            }
+
+            if (expectedType.IsAssignableFrom(currentType))
+            {
+                return true;
+            }
+
+            return (currentType?.BaseType?.IsGenericType ?? false && currentType?.BaseType.GetGenericTypeDefinition() == expectedType) || (currentType.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == expectedType));
+        }
+
+        private bool IsImplementationOf<T>(dynamic handler)
+        {
+            return IsImplementationOf(typeof(T), handler);
+        }
+
+        private bool IsImplementationOf(Type expectedType, dynamic handler)
+        {
+            return IsImplementationOf(expectedType, (Type)handler.RealObject.GetType());
         }
 
         private IEnumerable<dynamic> GetHandlersInstanceFor(Type messageType)
@@ -156,7 +197,20 @@ namespace StartingWithSagasBus
 
             foreach (var missing in missingHandlers)
             {
-                _handlerInstances.Add(Activator.CreateInstance(missing).AsDynamic());
+                var constructor = missing.GetConstructor(new Type[] { });
+                var ctorParameters = new object[] { };
+                if (constructor == null)
+                {
+                    constructor = missing.GetConstructor(new Type[] { typeof(Bus) });
+                    ctorParameters = new object[] { this };
+                }
+
+                if (constructor == null)
+                {
+                    throw new InvalidOperationException("No valid constructor found");
+                }
+
+                _handlerInstances.Add(constructor.Invoke(ctorParameters).AsDynamic());
             }
 
             return _handlerInstances.Where(instance => handlers.Any(handlerType => instance.RealObject.GetType() == handlerType));
@@ -182,6 +236,19 @@ namespace StartingWithSagasBus
                 catch (Exception) { }
 
                 _incomingQueue = null;
+            }
+
+            if (_handlerInstances != null)
+            {
+                var disposableHandlers = _handlerInstances.Where(h => h is IDisposable).Cast<IDisposable>();
+                foreach (var disposable in disposableHandlers)
+                {
+                    try
+                    {
+                        disposable.Dispose();
+                    }
+                    catch { }
+                }
             }
         }
     }

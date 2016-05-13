@@ -12,5 +12,6 @@ namespace Messages
         public string TankType { get; set; }
         public int NumberToManufacture { get; set; }
         public DateTime ManufactureByWhen { get; set; }
+        public Guid SagaId { get; set; }
     }
 }

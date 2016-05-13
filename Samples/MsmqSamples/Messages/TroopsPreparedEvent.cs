@@ -8,5 +8,6 @@ namespace Messages
 {
     public class TroopsPreparedEvent
     {
+        public Guid SagaId { get; set; }
     }
 }
