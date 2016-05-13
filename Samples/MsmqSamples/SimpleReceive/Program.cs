@@ -17,9 +17,9 @@ namespace SimpleReceive
 
         static void Main(string[] args)
         {
-            var queueName = @".\Private$\msmqsimplesendsample";
+            var queueAddress = @".\Private$\msmqsimplesendsample";
 
-            using (var queue = new MessageQueue(queueName))
+            using (var queue = new MessageQueue(queueAddress))
             {
                 queue.ReceiveCompleted += Queue_ReceiveCompleted;
                 queue.BeginReceive();

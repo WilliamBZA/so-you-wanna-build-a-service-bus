@@ -12,11 +12,11 @@ namespace SimpleSend
     {
         static void Main(string[] args)
         {
-            var queueName = @".\Private$\msmqsimplesendsample";
+            var queueAddress = @".\Private$\msmqsimplesendsample";
 
-            CheckQueueExists(queueName);
+            CheckQueueExists(queueAddress);
 
-            using (var queue = new MessageQueue(queueName))
+            using (var queue = new MessageQueue(queueAddress))
             {
                 queue.Send(new SimpleMessage("Test message"));
             }
