@@ -17,7 +17,7 @@ namespace SimplePubSubSend
             var incomingAddress = @".\Private$\simplePubSubSendIncoming";
 
             var bus = new Bus(incomingAddress);
-
+            
             Console.WriteLine("Press enter to send messages");
             Console.ReadLine();
 

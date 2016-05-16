@@ -20,6 +20,7 @@ namespace RecoverySend
             Console.ReadLine();
 
             bus.Send(new SimpleMessage { });
+            Console.WriteLine("Sent!");
             Console.ReadLine();
         }
     }

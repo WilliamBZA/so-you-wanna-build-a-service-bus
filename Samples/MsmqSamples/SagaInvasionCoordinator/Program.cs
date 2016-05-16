@@ -50,7 +50,7 @@ namespace SagaInvasionCoordinator
             _bus.Send(new ManufactureTanksCommand { SagaId = message.SagaId, ManufactureByWhen = message.InvasionDate.AddMonths(-1), NumberToManufacture = 50 });
             _bus.Send(new PrepareTroopsCommand { SagaId = message.SagaId, InvasionDate = message.InvasionDate, NumberOfTroops = 800 });
 
-            SetTimeout(DateTime.Now.AddSeconds(20));
+            //SetTimeout(DateTime.Now.AddSeconds(20));
             SetTimeout(message.InvasionDate.AddMonths(-1));
         }
 

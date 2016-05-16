@@ -35,6 +35,8 @@ namespace SimplePubSubBus
 
         public void SubscribeToMessagesFrom<T>(string fromAddress)
         {
+            CheckQueueExists(fromAddress);
+
             using (var tx = new MessageQueueTransaction())
             {
                 using (var queue = new MessageQueue(fromAddress))

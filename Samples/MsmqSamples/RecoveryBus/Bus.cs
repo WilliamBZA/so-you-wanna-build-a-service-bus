@@ -41,6 +41,8 @@ namespace RecoveryBus
 
         public void SubscribeToMessagesFrom<T>(string fromAddress)
         {
+            CheckQueueExists(fromAddress);
+
             using (var tx = new MessageQueueTransaction())
             {
                 using (var queue = new MessageQueue(fromAddress))
@@ -174,8 +176,9 @@ namespace RecoveryBus
             {
                 handler.Handle(body);
             }
-            catch (Exception) when (FlrIsEnabled && retryCount++ < 2)
+            catch (Exception) when (FlrIsEnabled && retryCount++ < 3)
             {
+                Console.WriteLine("Something went wrong, retrying FLR {0} times", retryCount);
                 HandleMessage(body, handler, retryCount);
             }
             catch (Exception) when (SlrIsEnabled && slrRetryCount++ < 3)
@@ -189,10 +192,6 @@ namespace RecoveryBus
             {
                 Console.WriteLine("Ahhh! Couldn't resolve!");
                 SendToErrorQueue(body);
-            }
-            catch (Exception)
-            {
-                throw;
             }
         }
 
