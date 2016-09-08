@@ -17,6 +17,9 @@ namespace RecoveryReceive
             var receiveQueueAddress = @".\Private$\msmqrecoveryReceive";
 
             var bus = new Bus(receiveQueueAddress);
+            bus.FlrIsEnabled = true;
+            bus.SlrIsEnabled = true;
+            bus.DlqIsEnabled = true;
 
             bus.SubscribeToMessagesFrom<SimpleMessage>(sendQueueAddress);
 

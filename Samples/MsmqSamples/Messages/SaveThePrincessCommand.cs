@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Messages
 {
-    public class InvasionForceReadyEvent
+    public class SaveThePrincessCommand
     {
     }
 }

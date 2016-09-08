@@ -30,7 +30,6 @@ namespace SimplePubSubBus
 
             _incomingQueue.PeekCompleted += Queue_PeekCompleted;
             _incomingQueue.BeginPeek();
-
         }
 
         public void SubscribeToMessagesFrom<T>(string fromAddress)

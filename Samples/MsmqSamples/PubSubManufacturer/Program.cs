@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimplePubSubManufacturer
+namespace SimplePubSubBreakfast
 {
     class Program
     {
@@ -17,17 +17,17 @@ namespace SimplePubSubManufacturer
             var incomingAddress = @".\Private$\simplePubSubSendManufacturer";
 
             var bus = new Bus(incomingAddress);
-            bus.SubscribeToMessagesFrom<ManufactureTanksCommand>(publisherAddress);
+            bus.SubscribeToMessagesFrom<HaveBreakfastCommand>(publisherAddress);
 
             Console.ReadLine();
         }
     }
 
-    public class Manufacturer : IHandle<ManufactureTanksCommand>
+    public class Manufacturer : IHandle<HaveBreakfastCommand>
     {
-        public void Handle(ManufactureTanksCommand message)
+        public void Handle(HaveBreakfastCommand message)
         {
-            Console.WriteLine("Must manufature {0} {1} tanks by {2}", message.NumberToManufacture, message.TankType, message.ManufactureByWhen);
+            Console.WriteLine("Must eat a {0} breakfast by {1}", message.BreakfastType, message.FinishByWhen);
         }
     }
 }

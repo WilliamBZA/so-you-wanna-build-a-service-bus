@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Messages
 {
-    public class PrepareTroopsCommand
+    public class PrepareSwordCommand
     {
-        public DateTime InvasionDate { get; set; }
-        public int NumberOfTroops { get; set; }
+        public DateTime QuestDate { get; set; }
+        public int NumberOfFolds { get; set; }
         public Guid SagaId { get; set; }
     }
 }

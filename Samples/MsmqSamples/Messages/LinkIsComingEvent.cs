@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Messages
 {
-    public class TroopsPreparedEvent
+    public class LinkIsComingEvent
     {
-        public Guid SagaId { get; set; }
     }
 }

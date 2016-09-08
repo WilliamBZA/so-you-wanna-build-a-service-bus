@@ -21,8 +21,8 @@ namespace SimplePubSubSend
             Console.WriteLine("Press enter to send messages");
             Console.ReadLine();
 
-            bus.Send(new InvadeCountryCommand { CountryToInvade = "Poland", InvasionDate = DateTime.Now.AddMonths(1) });
-            bus.Send(new ManufactureTanksCommand { TankType = "Hornsby tractor", NumberToManufacture = 5, ManufactureByWhen = DateTime.Now.AddMonths(1).AddDays(-7) });
+            bus.Send(new PutPantsOnCommand { PantsColour = "Green", ManufactureDate = DateTime.Now.AddMonths(-1) });
+            bus.Send(new HaveBreakfastCommand { BreakfastType = "Full English", NumberOfCoffees = 5, FinishByWhen = DateTime.Now.AddHours(1) });
 
             Console.WriteLine("Messages sent!");
 

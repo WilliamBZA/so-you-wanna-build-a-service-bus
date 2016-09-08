@@ -7,39 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SagaManufacturing
+namespace SagaOldMan
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var manufacturingIncomingAddress = @".\Private$\simpleSagaManufacturing";
-            var invasionSagaAddress = @".\Private$\simpleSagaInvasionSaga";
+            var incomingAddress = @".\Private$\simpleSagaOldMan";
+            var questSagaAddress = @".\Private$\simpleSagaQuestSaga";
 
-            var bus = new Bus(manufacturingIncomingAddress);
-            bus.SubscribeToMessagesFrom<ManufactureTanksCommand>(invasionSagaAddress);
+            var bus = new Bus(incomingAddress);
+            bus.SubscribeToMessagesFrom<PrepareSwordCommand>(questSagaAddress);
 
             Console.WriteLine("Subscriptions complete");
             Console.ReadLine();
         }
     }
 
-    public class Manufacturer : IHandle<ManufactureTanksCommand>
+    public class OldMan : IHandle<PrepareSwordCommand>
     {
         private Bus _bus;
 
-        public Manufacturer(Bus bus)
+        public OldMan(Bus bus)
         {
             _bus = bus;
         }
 
-        public void Handle(ManufactureTanksCommand message)
+        public void Handle(PrepareSwordCommand message)
         {
-            Console.WriteLine("Must manufature {0} {1} tanks by {2}", message.NumberToManufacture, message.TankType, message.ManufactureByWhen);
+            Console.WriteLine("Must prepare the sword for Link's quest");
 
             Task.Delay(3000).Wait();
 
-            _bus.Send(new TanksManufacturedEvent { SagaId = message.SagaId });
+            Console.WriteLine("Sword is ready!");
+
+            _bus.Send(new SwordPreparedEvent { SagaId = message.SagaId });
         }
     }
 }

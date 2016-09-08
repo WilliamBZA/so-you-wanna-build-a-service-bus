@@ -12,20 +12,20 @@ namespace SimpleTypeBasedRoutingSend
     {
         static void Main(string[] args)
         {
-            var manufacturingAddress = @".\Private$\factoryCommand";
-            var centralCommandAddress = @".\Private$\centralCommand";
+            var breakfastAddress = @".\Private$\breakfast";
+            var linkAddress = @".\Private$\link";
 
-            CheckQueueExists(manufacturingAddress);
-            CheckQueueExists(centralCommandAddress);
+            CheckQueueExists(breakfastAddress);
+            CheckQueueExists(linkAddress);
 
             var sender = new Sender();
 
             // Mapping happens in sender. I.e. the sender MUST know where messages go.
-            sender.MapTypeToQueue(typeof(InvadeCountryCommand), centralCommandAddress);
-            sender.MapTypeToQueue(typeof(ManufactureTanksCommand), manufacturingAddress);
+            sender.MapTypeToQueue(typeof(PutPantsOnCommand), linkAddress);
+            sender.MapTypeToQueue(typeof(HaveBreakfastCommand), breakfastAddress);
 
-            sender.Send(new InvadeCountryCommand { CountryToInvade = "Poland", InvasionDate = DateTime.Now.AddMonths(1) });
-            sender.Send(new ManufactureTanksCommand { TankType = "Hornsby tractor", NumberToManufacture = 5, ManufactureByWhen = DateTime.Now.AddMonths(1).AddDays(-7) });
+            sender.Send(new PutPantsOnCommand { PantsColour = "Green", ManufactureDate = DateTime.Now.AddMonths(-1) });
+            sender.Send(new HaveBreakfastCommand { BreakfastType = "Full English", NumberOfCoffees = 5, FinishByWhen = DateTime.Now.AddHours(1) });
         }
 
         private static void CheckQueueExists(string queueName)

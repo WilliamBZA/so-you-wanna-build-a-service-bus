@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Messages
 {
-    public class TanksManufacturedEvent
+    public class KidnapPrincessCommand
     {
         public Guid SagaId { get; set; }
     }

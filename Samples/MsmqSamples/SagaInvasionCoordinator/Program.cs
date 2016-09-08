@@ -7,34 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SagaInvasionCoordinator
+namespace QuestSaga
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var invasionSagaIncomingAddress = @".\Private$\simpleSagaInvasionSaga";
-            var churchillAddress = @".\Private$\simpleSagaChurchill";
-            var manufacturingAddress = @".\Private$\simpleSagaManufacturing";
-            var centralCommandAddress = @".\Private$\simpleSagaCentralCommand";
+            var incomingAddress = @".\Private$\simpleSagaQuestSaga";
+            var linkAddress = @".\Private$\simpleSagaLink";
+            var badGuyAddress = @".\Private$\simpleSagaBadGuy";
 
-            var bus = new Bus(invasionSagaIncomingAddress);
-            bus.SubscribeToMessagesFrom<InvadeCountryCommand>(churchillAddress);
-            bus.SubscribeToMessagesFrom<CommenceInvasionCommand>(churchillAddress);
+            var bus = new Bus(incomingAddress);
+            bus.SubscribeToMessagesFrom<PutPantsOnCommand>(linkAddress);
+            bus.SubscribeToMessagesFrom<HaveBreakfastCommand>(linkAddress);
 
-            bus.SubscribeToMessagesFrom<TroopsPreparedEvent>(centralCommandAddress);
-            bus.SubscribeToMessagesFrom<TanksManufacturedEvent>(manufacturingAddress);
+            bus.SubscribeToMessagesFrom<SwordPreparedEvent>(linkAddress);
+            bus.SubscribeToMessagesFrom<PrincessKidnappedEvent>(badGuyAddress);
 
             Console.WriteLine("Subscriptions complete");
             Console.ReadLine();
         }
     }
 
-    public class InvasionSaga : Saga<InvasionSagaData>,
-        IHandle<InvadeCountryCommand>,
-        IHandle<CommenceInvasionCommand>,
-        IHandle<TroopsPreparedEvent>,
-        IHandle<TanksManufacturedEvent>
+    public class InvasionSaga : Saga<QuestSagaData>,
+        IHandle<PutPantsOnCommand>,
+        IHandle<HaveBreakfastCommand>,
+        IHandle<SwordPreparedEvent>,
+        IHandle<PrincessKidnappedEvent>
     {
         private Bus _bus;
 
@@ -43,48 +42,56 @@ namespace SagaInvasionCoordinator
             _bus = bus;
         }
 
-        public void Handle(InvadeCountryCommand message)
+        public void Handle(PutPantsOnCommand message)
         {
-            Console.WriteLine("Invasion of {0} scheduled for {1}", message.CountryToInvade, message.InvasionDate);
+            Console.WriteLine("Link has put his pants on. We should prepare his quest");
 
-            _bus.Send(new ManufactureTanksCommand { SagaId = message.SagaId, ManufactureByWhen = message.InvasionDate.AddMonths(-1), NumberToManufacture = 50 });
-            _bus.Send(new PrepareTroopsCommand { SagaId = message.SagaId, InvasionDate = message.InvasionDate, NumberOfTroops = 800 });
+            _bus.Send(new KidnapPrincessCommand { SagaId = message.SagaId });
+            _bus.Send(new PrepareSwordCommand { SagaId = message.SagaId, NumberOfFolds = 800 });
 
-            //SetTimeout(DateTime.Now.AddSeconds(20));
-            SetTimeout(message.InvasionDate.AddMonths(-1));
+            // Check if everything is ready in time
+            SetTimeout(DateTime.Now.AddSeconds(20));
         }
 
-        public void Handle(TroopsPreparedEvent message)
+        public void Handle(HaveBreakfastCommand message)
         {
-            Data.TroopsReady = true;
-
-            if (Data.TanksReady)
+            if (!Data.IsSwordReady || !Data.IsPrincessKidnapped)
             {
-                _bus.Send(new InvasionForceReadyEvent { });
+                Console.WriteLine("Quest cancelled, telling everyone about it");
+                _bus.Send(new CancelQuestCommand { });
             }
-        }
 
-        public void Handle(TanksManufacturedEvent message)
-        {
-            Data.TanksReady = true;
-
-            if (Data.TroopsReady)
-            {
-                _bus.Send(new InvasionForceReadyEvent { });
-            }
-        }
-
-        public void Handle(CommenceInvasionCommand message)
-        {
             MarkAsCompleted();
+        }
+
+        public void Handle(SwordPreparedEvent message)
+        {
+            Data.IsSwordReady = true;
+
+            if (Data.IsPrincessKidnapped)
+            {
+                _bus.Send(new SaveThePrincessCommand { });
+                MarkAsCompleted();
+            }
+        }
+
+        public void Handle(PrincessKidnappedEvent message)
+        {
+            Data.IsPrincessKidnapped = true;
+
+            if (Data.IsSwordReady)
+            {
+                _bus.Send(new SaveThePrincessCommand { });
+                MarkAsCompleted();
+            }
         }
 
         public override void TimeoutTriggered(DateTime triggerTime)
         {
-            if (!Data.TroopsReady || !Data.TanksReady)
+            if (!Data.IsSwordReady || !Data.IsPrincessKidnapped)
             {
-                Console.WriteLine("Invasion cancelled, telling everyone about it");
-                _bus.Send(new CancelInvasionCommand { });
+                Console.WriteLine("Quest cancelled, telling everyone about it");
+                _bus.Send(new CancelQuestCommand { });
             }
 
             MarkAsCompleted();

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. SimpleSend", "SimpleSend\1. SimpleSend.csproj", "{1CEE3A61-86D5-498A-AD06-13C434F37EBC}"
 EndProject
@@ -15,27 +15,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. TransactionalSend", "Tra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. SimpleTypeBasedRoutingSend", "SimpleTypeBasedRouting\3. SimpleTypeBasedRoutingSend.csproj", "{06E3FB88-2B1B-404B-9C2E-37B49C7DEFAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. TypeBasedManufacturer", "TypeBasedManufacturer\3. TypeBasedManufacturer.csproj", "{F8EE481B-E70D-4E4A-A330-A579AAB1FF96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. TypeBasedBreakfast", "TypeBasedManufacturer\3. TypeBasedBreakfast.csproj", "{F8EE481B-E70D-4E4A-A330-A579AAB1FF96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. TypeBasedCentralCommand", "TypeBasedCentralCommand\3. TypeBasedCentralCommand.csproj", "{411C388A-6BFD-478D-AFCF-17320298139F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. TypeBasedPantsCommand", "TypeBasedCentralCommand\3. TypeBasedPantsCommand.csproj", "{411C388A-6BFD-478D-AFCF-17320298139F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubSend", "SimplePubSubSend\4. SimplePubSubSend.csproj", "{51567C94-4321-4C0B-AC6B-B3FDEBAA4E89}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubBus", "SimplePubSubBus\4. SimplePubSubBus.csproj", "{D224F42E-1577-427F-BDB9-35C10223776E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubCentralCommand", "SimplePubSubCentralCommand\4. SimplePubSubCentralCommand.csproj", "{BE6E84A6-D459-4E3B-BEE0-449FE56230B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubPants", "SimplePubSubCentralCommand\4. SimplePubSubPants.csproj", "{BE6E84A6-D459-4E3B-BEE0-449FE56230B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubManufacturer", "PubSubManufacturer\4. SimplePubSubManufacturer.csproj", "{411E637E-918C-40C0-B410-3C2B28285B1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. SimplePubSubBreakfast", "PubSubManufacturer\4. SimplePubSubBreakfast.csproj", "{411E637E-918C-40C0-B410-3C2B28285B1C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. StartingWithSagasBus", "StartingWithSagasBus\5. StartingWithSagasBus.csproj", "{3A028619-15E5-4120-B8C4-FDA40F5DFAE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaInvasionCoordinator", "SagaInvasionCoordinator\5. SagaInvasionCoordinator.csproj", "{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. QuestSaga", "SagaInvasionCoordinator\5. QuestSaga.csproj", "{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaChurchill", "SagaChurchill\5. SagaChurchill.csproj", "{C3A4D335-9460-4CB1-8C87-F38E2A5750A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaBadGuy", "SagaChurchill\5. SagaBadGuy.csproj", "{C3A4D335-9460-4CB1-8C87-F38E2A5750A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaManufacturing", "SagaManufacturing\5. SagaManufacturing.csproj", "{13D5CB42-D084-4CF3-ACA2-D6EDEAD77CC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaOldMan", "SagaManufacturing\5. SagaOldMan.csproj", "{13D5CB42-D084-4CF3-ACA2-D6EDEAD77CC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaCentralCommand", "SagaCentralCommand\5. SagaCentralCommand.csproj", "{30D0579C-8FC5-480C-ACE3-770073CB6A4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. SagaLink", "SagaCentralCommand\5. SagaLink.csproj", "{30D0579C-8FC5-480C-ACE3-770073CB6A4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6. RecoverySend", "RecoverySend\6. RecoverySend.csproj", "{8DB8BB06-1C82-4A73-AEC5-A7DBF954EA4F}"
 EndProject

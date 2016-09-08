@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Messages
 {
-    public class ManufactureTanksCommand
+    public class HaveBreakfastCommand
     {
         public DateTime TimeSent { get; set; } = DateTime.Now;
-        public string TankType { get; set; }
-        public int NumberToManufacture { get; set; }
-        public DateTime ManufactureByWhen { get; set; }
+        public string BreakfastType { get; set; }
+        public int NumberOfCoffees { get; set; }
+        public DateTime FinishByWhen { get; set; }
         public Guid SagaId { get; set; }
     }
 }

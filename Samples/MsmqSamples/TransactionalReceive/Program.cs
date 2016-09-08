@@ -12,7 +12,7 @@ namespace TransactionalReceive
     {
         static Action<SimpleMessage> processMessage = message =>
         {
-            Console.WriteLine("{0}\n\t recieved at {1}", message.Title, message.TimeSent);
+            Console.WriteLine("{0}\n\t received at {1}", message.Title, message.TimeSent);
         };
 
         static void Main(string[] args)

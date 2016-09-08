@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimplePubSubCentralCommand
+namespace SimplePubSubPants
 {
     class Program
     {
@@ -17,18 +17,18 @@ namespace SimplePubSubCentralCommand
             var incomingAddress = @".\Private$\simplePubSubSendCentralCommand";
 
             var bus = new Bus(incomingAddress);
-            bus.SubscribeToMessagesFrom<InvadeCountryCommand>(publisherAddress);
+            bus.SubscribeToMessagesFrom<PutPantsOnCommand>(publisherAddress);
 
             Console.WriteLine("Subscriptions complete");
             Console.ReadLine();
         }
     }
 
-    public class CentralCommand : IHandle<InvadeCountryCommand>
+    public class CentralCommand : IHandle<PutPantsOnCommand>
     {
-        public void Handle(InvadeCountryCommand message)
+        public void Handle(PutPantsOnCommand message)
         {
-            Console.WriteLine("Invade {0} on {1}", message.CountryToInvade, message.InvasionDate);
+            Console.WriteLine("Putting {0} pants on", message.PantsColour);
         }
     }
 }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Messages
 {
-    public class InvadeCountryCommand
+    public class PutPantsOnCommand
     {
         public DateTime TimeSent { get; set; } = DateTime.Now;
-        public string CountryToInvade { get; set; }
-        public DateTime InvasionDate { get; set; }
+        public string PantsColour { get; set; }
+        public DateTime ManufactureDate { get; set; }
         public Guid SagaId { get; set; }
     }
 }

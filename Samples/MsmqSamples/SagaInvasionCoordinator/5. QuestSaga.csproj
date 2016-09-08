@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE6E84A6-D459-4E3B-BEE0-449FE56230B2}</ProjectGuid>
+    <ProjectGuid>{A834EC85-7050-4C5F-99D6-9E8D340CAD7C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SimplePubSubCentralCommand</RootNamespace>
-    <AssemblyName>SimplePubSubCentralCommand</AssemblyName>
+    <RootNamespace>QuestSaga</RootNamespace>
+    <AssemblyName>QuestSaga</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QuestSagaData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -54,9 +55,9 @@
       <Project>{7f64800f-235d-4bd7-a98d-4c23216bf851}</Project>
       <Name>Messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SimplePubSubBus\4. SimplePubSubBus.csproj">
-      <Project>{d224f42e-1577-427f-bdb9-35c10223776e}</Project>
-      <Name>4. SimplePubSubBus</Name>
+    <ProjectReference Include="..\StartingWithSagasBus\5. StartingWithSagasBus.csproj">
+      <Project>{3a028619-15e5-4120-b8c4-fda40f5dfae8}</Project>
+      <Name>5. StartingWithSagasBus</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

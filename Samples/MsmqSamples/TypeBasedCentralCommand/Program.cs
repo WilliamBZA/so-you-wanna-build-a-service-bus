@@ -6,20 +6,20 @@ using System.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TypeBasedCentralCommand
+namespace TypeBasedPantsCommand
 {
     class Program
     {
-        static Action<InvadeCountryCommand> processMessage = message =>
+        static Action<PutPantsOnCommand> processMessage = message =>
         {
-            Console.WriteLine("Invade {0} on {1}", message.CountryToInvade, message.InvasionDate);
+            Console.WriteLine("Putting {0} pants on", message.PantsColour);
         };
 
         static void Main(string[] args)
         {
-            var centralCommandAddress = @".\Private$\centralCommand";
+            var linkAddress = @".\Private$\link";
 
-            using (var queue = new MessageQueue(centralCommandAddress))
+            using (var queue = new MessageQueue(linkAddress))
             {
                 queue.PeekCompleted += Queue_PeekCompleted;
                 queue.BeginPeek();
@@ -37,9 +37,9 @@ namespace TypeBasedCentralCommand
                 tx.Begin();
 
                 var message = queue.Receive(tx);
-                message.Formatter = new XmlMessageFormatter(new Type[] { typeof(InvadeCountryCommand) });
+                message.Formatter = new XmlMessageFormatter(new Type[] { typeof(PutPantsOnCommand) });
 
-                var recievedMessage = (InvadeCountryCommand)message.Body;
+                var recievedMessage = (PutPantsOnCommand)message.Body;
                 processMessage(recievedMessage);
 
                 tx.Commit();

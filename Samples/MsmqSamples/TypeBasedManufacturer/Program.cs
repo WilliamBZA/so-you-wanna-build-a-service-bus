@@ -6,20 +6,20 @@ using System.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TypeBasedManufacturer
+namespace TypeBasedBreakfast
 {
     class Program
     {
-        static Action<ManufactureTanksCommand> processMessage = message =>
+        static Action<HaveBreakfastCommand> processMessage = message =>
         {
-            Console.WriteLine("Must manufature {0} {1} tanks by {2}", message.NumberToManufacture, message.TankType, message.ManufactureByWhen);
+            Console.WriteLine("Must eat a {0} breakfast by {2}", message.BreakfastType, message.FinishByWhen);
         };
 
         static void Main(string[] args)
         {
-            var manufacturingAddress = @".\Private$\factoryCommand";
+            var breakfastAddress = @".\Private$\breakfast";
 
-            using (var queue = new MessageQueue(manufacturingAddress))
+            using (var queue = new MessageQueue(breakfastAddress))
             {
                 queue.PeekCompleted += Queue_PeekCompleted;
                 queue.BeginPeek();
@@ -37,9 +37,9 @@ namespace TypeBasedManufacturer
                 tx.Begin();
 
                 var message = queue.Receive(tx);
-                message.Formatter = new XmlMessageFormatter(new Type[] { typeof(ManufactureTanksCommand) });
+                message.Formatter = new XmlMessageFormatter(new Type[] { typeof(HaveBreakfastCommand) });
 
-                var recievedMessage = (ManufactureTanksCommand)message.Body;
+                var recievedMessage = (HaveBreakfastCommand)message.Body;
                 processMessage(recievedMessage);
 
                 tx.Commit();
