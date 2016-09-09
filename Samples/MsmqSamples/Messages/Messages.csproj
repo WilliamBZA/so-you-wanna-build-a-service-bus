@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CancelQuestCommand.cs" />
+    <Compile Include="BreakfastFinishedEvent.cs" />
     <Compile Include="KidnapPrincessCommand.cs" />
     <Compile Include="LinkIsComingEvent.cs" />
+    <Compile Include="PantsHaveBeenPutOnEvent.cs" />
     <Compile Include="SaveThePrincessCommand.cs" />
     <Compile Include="Contracts\IHandle.cs" />
     <Compile Include="Contracts\Saga.cs" />

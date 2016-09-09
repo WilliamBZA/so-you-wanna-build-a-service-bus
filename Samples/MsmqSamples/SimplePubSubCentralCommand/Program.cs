@@ -17,18 +17,18 @@ namespace SimplePubSubPants
             var incomingAddress = @".\Private$\simplePubSubSendCentralCommand";
 
             var bus = new Bus(incomingAddress);
-            bus.SubscribeToMessagesFrom<PutPantsOnCommand>(publisherAddress);
+            bus.SubscribeToMessagesFrom<PantsHaveBeenPutOnEvent>(publisherAddress);
 
             Console.WriteLine("Subscriptions complete");
             Console.ReadLine();
         }
     }
 
-    public class CentralCommand : IHandle<PutPantsOnCommand>
+    public class PantsHandler : IHandle<PantsHaveBeenPutOnEvent>
     {
-        public void Handle(PutPantsOnCommand message)
+        public void Handle(PantsHaveBeenPutOnEvent message)
         {
-            Console.WriteLine("Putting {0} pants on", message.PantsColour);
+            Console.WriteLine("{0} pants have been put on", message.PantsColour);
         }
     }
 }

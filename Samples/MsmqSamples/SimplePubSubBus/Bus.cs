@@ -41,7 +41,12 @@ namespace SimplePubSubBus
                 using (var queue = new MessageQueue(fromAddress))
                 {
                     tx.Begin();
-                    queue.Send(new Subscribe { MessageType = typeof(T).AssemblyQualifiedName, Address = _incomingQueue.Path }, tx);
+                    queue.Send(
+                        new Subscribe
+                    {
+                        MessageType = typeof(T).AssemblyQualifiedName,
+                        Address = _incomingQueue.Path
+                    }, tx);
                     tx.Commit();
                 }
             }

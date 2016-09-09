@@ -18,9 +18,8 @@ namespace QuestSaga
             var badGuyAddress = @".\Private$\simpleSagaBadGuy";
 
             var bus = new Bus(incomingAddress);
-            bus.SubscribeToMessagesFrom<PutPantsOnCommand>(linkAddress);
-            bus.SubscribeToMessagesFrom<HaveBreakfastCommand>(linkAddress);
-
+            bus.SubscribeToMessagesFrom<PantsHaveBeenPutOnEvent>(linkAddress);
+            bus.SubscribeToMessagesFrom<BreakfastFinishedEvent>(linkAddress);
             bus.SubscribeToMessagesFrom<SwordPreparedEvent>(linkAddress);
             bus.SubscribeToMessagesFrom<PrincessKidnappedEvent>(badGuyAddress);
 
@@ -30,8 +29,8 @@ namespace QuestSaga
     }
 
     public class InvasionSaga : Saga<QuestSagaData>,
-        IHandle<PutPantsOnCommand>,
-        IHandle<HaveBreakfastCommand>,
+        IHandle<PantsHaveBeenPutOnEvent>,
+        IHandle<BreakfastFinishedEvent>,
         IHandle<SwordPreparedEvent>,
         IHandle<PrincessKidnappedEvent>
     {
@@ -42,7 +41,7 @@ namespace QuestSaga
             _bus = bus;
         }
 
-        public void Handle(PutPantsOnCommand message)
+        public void Handle(PantsHaveBeenPutOnEvent message)
         {
             Console.WriteLine("Link has put his pants on. We should prepare his quest");
 
@@ -51,17 +50,6 @@ namespace QuestSaga
 
             // Check if everything is ready in time
             SetTimeout(DateTime.Now.AddSeconds(20));
-        }
-
-        public void Handle(HaveBreakfastCommand message)
-        {
-            if (!Data.IsSwordReady || !Data.IsPrincessKidnapped)
-            {
-                Console.WriteLine("Quest cancelled, telling everyone about it");
-                _bus.Send(new CancelQuestCommand { });
-            }
-
-            MarkAsCompleted();
         }
 
         public void Handle(SwordPreparedEvent message)
@@ -86,7 +74,7 @@ namespace QuestSaga
             }
         }
 
-        public override void TimeoutTriggered(DateTime triggerTime)
+        public void Handle(BreakfastFinishedEvent message)
         {
             if (!Data.IsSwordReady || !Data.IsPrincessKidnapped)
             {
@@ -95,6 +83,15 @@ namespace QuestSaga
             }
 
             MarkAsCompleted();
+        }
+
+        public override void TimeoutTriggered(DateTime triggerTime)
+        {
+            if (!Data.IsSwordReady || !Data.IsPrincessKidnapped)
+            {
+                Console.WriteLine("Quest cancelled, telling everyone about it");
+                _bus.Send(new CancelQuestCommand { });
+            }
         }
     }
 }

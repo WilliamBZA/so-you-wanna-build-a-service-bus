@@ -17,17 +17,17 @@ namespace SimplePubSubBreakfast
             var incomingAddress = @".\Private$\simplePubSubSendManufacturer";
 
             var bus = new Bus(incomingAddress);
-            bus.SubscribeToMessagesFrom<HaveBreakfastCommand>(publisherAddress);
+            bus.SubscribeToMessagesFrom<BreakfastFinishedEvent>(publisherAddress);
 
             Console.ReadLine();
         }
     }
 
-    public class Manufacturer : IHandle<HaveBreakfastCommand>
+    public class BreakfastHandler : IHandle<BreakfastFinishedEvent>
     {
-        public void Handle(HaveBreakfastCommand message)
+        public void Handle(BreakfastFinishedEvent message)
         {
-            Console.WriteLine("Must eat a {0} breakfast by {1}", message.BreakfastType, message.FinishByWhen);
+            Console.WriteLine("Ate a {0} breakfast by {1}", message.BreakfastType, message.FinishByWhen);
         }
     }
 }

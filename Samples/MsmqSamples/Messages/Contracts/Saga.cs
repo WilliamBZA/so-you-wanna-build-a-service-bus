@@ -47,7 +47,6 @@ namespace Messages.Contracts
 
         public void MarkAsCompleted()
         {
-            throw new NotImplementedException();
         }
 
         public void Dispose()

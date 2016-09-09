@@ -26,12 +26,12 @@ namespace SagaLink
             Console.WriteLine("Press enter to put pants on");
             Console.ReadLine();
 
-            bus.Send(new PutPantsOnCommand { PantsColour = "Green", SagaId = sagaId });
+            bus.Send(new PantsHaveBeenPutOnEvent { PantsColour = "Green", SagaId = sagaId });
 
-            Console.WriteLine("Pants on. Press enter to each breakfast");
+            Console.WriteLine("Pants on. Press enter to eat breakfast");
             Console.ReadLine();
 
-            bus.Send(new HaveBreakfastCommand { BreakfastType= "Full English", SagaId = sagaId });
+            bus.Send(new BreakfastFinishedEvent { BreakfastType= "Full English", SagaId = sagaId });
 
             Console.ReadLine();
         }
@@ -39,13 +39,6 @@ namespace SagaLink
 
     public class Link : IHandle<SaveThePrincessCommand>
     {
-        private Bus _bus;
-
-        public Link(Bus bus)
-        {
-            _bus = bus;
-        }
-
         public void Handle(SaveThePrincessCommand message)
         {
             Console.WriteLine("Go forth and save the kingdom!");
