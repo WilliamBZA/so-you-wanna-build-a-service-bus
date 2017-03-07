@@ -17,9 +17,6 @@ namespace RecoveryReceive
             var receiveQueueAddress = @".\Private$\msmqrecoveryReceive";
 
             var bus = new Bus(receiveQueueAddress);
-            //bus.FlrIsEnabled = true;
-            //bus.SlrIsEnabled = true;
-            //bus.DlqIsEnabled = true;
 
             bus.SubscribeToMessagesFrom<SimpleMessage>(sendQueueAddress);
 
@@ -27,26 +24,18 @@ namespace RecoveryReceive
         }
     }
 
-    public class AlwaysErrorHandler : IHandle<SimpleMessage>
+    public class ErrorOnceHandler : IHandle<SimpleMessage>
     {
+        int numberOfErrors = 0;
+
         public void Handle(SimpleMessage message)
         {
-            throw new NotImplementedException();
+            if (numberOfErrors++ < 1)
+            {
+                throw new NotImplementedException();
+            }
+
+            Console.WriteLine("Handled successfully");
         }
     }
-
-    //public class ErrorOnceHandler : IHandle<SimpleMessage>
-    //{
-    //    int numberOfErrors = 0;
-
-    //    public void Handle(SimpleMessage message)
-    //    {
-    //        if (numberOfErrors++ < 1)
-    //        {
-    //            throw new NotImplementedException();
-    //        }
-
-    //        Console.WriteLine("Handled successfully");
-    //    }
-    //}
 }

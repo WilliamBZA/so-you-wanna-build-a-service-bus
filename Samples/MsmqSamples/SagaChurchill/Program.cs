@@ -19,7 +19,6 @@ namespace SagaBadGuy
             var bus = new Bus(incomingAddress);
             bus.SubscribeToMessagesFrom<KidnapPrincessCommand>(questSagaAddress);
             bus.SubscribeToMessagesFrom<CancelQuestCommand>(questSagaAddress);
-            bus.SubscribeToMessagesFrom<LinkIsComingEvent>(questSagaAddress);
 
             Console.WriteLine("Subscriptions complete");
             Console.WriteLine("Press enter to begin invasion");
@@ -32,8 +31,7 @@ namespace SagaBadGuy
     }
 
     public class BadGuy : IHandle<CancelQuestCommand>,
-        IHandle<KidnapPrincessCommand>,
-        IHandle<LinkIsComingEvent>
+        IHandle<KidnapPrincessCommand>
     {
         private Bus _bus;
 
@@ -50,11 +48,6 @@ namespace SagaBadGuy
             Console.WriteLine("Princess has been kidnapped. She's fiesty :)");
 
             _bus.Send(new PrincessKidnappedEvent { });
-        }
-
-        public void Handle(LinkIsComingEvent message)
-        {
-            Console.WriteLine("Expecting Link. Sending minions to defend.");
         }
 
         public void Handle(CancelQuestCommand message)

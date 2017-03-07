@@ -37,7 +37,7 @@ namespace RecoveryBus
 
         public bool FlrIsEnabled { get; set; }
         public bool SlrIsEnabled { get; set; }
-        public bool DlqIsEnabled { get; set; }
+        public bool ErrorQueueIsEnabled { get; set; }
 
         public void SubscribeToMessagesFrom<T>(string fromAddress)
         {
@@ -188,7 +188,7 @@ namespace RecoveryBus
                 Task.Delay(delayTime).Wait();
                 HandleMessage(body, handler, retryCount, slrRetryCount);
             }
-            catch (Exception) when (DlqIsEnabled)
+            catch (Exception) when (ErrorQueueIsEnabled)
             {
                 Console.WriteLine("Ahhh! Couldn't resolve!");
                 SendToErrorQueue(body);

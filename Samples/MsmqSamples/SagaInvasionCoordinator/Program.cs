@@ -28,7 +28,7 @@ namespace QuestSaga
         }
     }
 
-    public class InvasionSaga : Saga<QuestSagaData>,
+    public class QuestSaga : Saga<QuestSagaData>,
         IHandle<PantsHaveBeenPutOnEvent>,
         IHandle<BreakfastFinishedEvent>,
         IHandle<SwordPreparedEvent>,
@@ -36,7 +36,7 @@ namespace QuestSaga
     {
         private Bus _bus;
 
-        public InvasionSaga(Bus bus)
+        public QuestSaga(Bus bus)
         {
             _bus = bus;
         }
