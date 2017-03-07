@@ -78,8 +78,8 @@ namespace QuestSaga
         {
             if (!Data.IsSwordReady || !Data.IsPrincessKidnapped)
             {
-                Console.WriteLine("Quest cancelled, telling everyone about it");
-                _bus.Send(new CancelQuestCommand { });
+                Console.WriteLine("Quest cancelled, telling everyone about it");1
+                _bus.Send(new PutPrincessBackCommand { });
             }
 
             MarkAsCompleted();
@@ -90,7 +90,7 @@ namespace QuestSaga
             if (!Data.IsSwordReady || !Data.IsPrincessKidnapped)
             {
                 Console.WriteLine("Quest cancelled, telling everyone about it");
-                _bus.Send(new CancelQuestCommand { });
+                _bus.Send(new PutPrincessBackCommand { });
             }
         }
     }

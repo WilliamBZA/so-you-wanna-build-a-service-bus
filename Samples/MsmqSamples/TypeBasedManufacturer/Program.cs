@@ -12,7 +12,7 @@ namespace TypeBasedBreakfast
     {
         static Action<HaveBreakfastCommand> processMessage = message =>
         {
-            Console.WriteLine("Must eat a {0} breakfast by {2}", message.BreakfastType, message.FinishByWhen);
+            Console.WriteLine("Must eat a {0} breakfast by {1}", message.BreakfastType, message.FinishByWhen);
         };
 
         static void Main(string[] args)

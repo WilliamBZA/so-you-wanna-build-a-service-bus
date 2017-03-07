@@ -36,8 +36,6 @@ namespace SimpleReceive
 
             var recievedMessage = (SimpleMessage)message.Body;
             processMessage(recievedMessage);
-
-            queue.BeginReceive();
         }
     }
 }

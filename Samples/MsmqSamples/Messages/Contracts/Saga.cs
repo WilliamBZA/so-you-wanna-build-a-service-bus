@@ -45,10 +45,6 @@ namespace Messages.Contracts
         {
         }
 
-        public void MarkAsCompleted()
-        {
-        }
-
         public void Dispose()
         {
             foreach (var timeout in _timeouts)

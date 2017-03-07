@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Messages
 {
-    public class CancelQuestCommand
+    public class PutPrincessBackCommand
     {
         public Guid SagaId { get; set; }
     }

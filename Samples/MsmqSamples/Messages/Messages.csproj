@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CancelQuestCommand.cs" />
+    <Compile Include="PutPrincessBackCommand.cs" />
     <Compile Include="BreakfastFinishedEvent.cs" />
     <Compile Include="KidnapPrincessCommand.cs" />
     <Compile Include="LinkIsComingEvent.cs" />
