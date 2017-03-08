@@ -44,8 +44,6 @@ namespace TransactionalReceive
 
                 tx.Commit();
             }
-
-            queue.BeginPeek();
         }
     }
 }

@@ -59,7 +59,6 @@ namespace QuestSaga
             if (Data.IsPrincessKidnapped)
             {
                 _bus.Send(new SaveThePrincessCommand { });
-                MarkAsCompleted();
             }
         }
 
@@ -70,7 +69,6 @@ namespace QuestSaga
             if (Data.IsSwordReady)
             {
                 _bus.Send(new SaveThePrincessCommand { });
-                MarkAsCompleted();
             }
         }
 
@@ -78,11 +76,9 @@ namespace QuestSaga
         {
             if (!Data.IsSwordReady || !Data.IsPrincessKidnapped)
             {
-                Console.WriteLine("Quest cancelled, telling everyone about it");1
+                Console.WriteLine("Quest cancelled, telling everyone about it");
                 _bus.Send(new PutPrincessBackCommand { });
             }
-
-            MarkAsCompleted();
         }
 
         public override void TimeoutTriggered(DateTime triggerTime)
