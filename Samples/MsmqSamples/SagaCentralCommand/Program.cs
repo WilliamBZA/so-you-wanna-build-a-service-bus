@@ -26,12 +26,12 @@ namespace SagaLink
             Console.WriteLine("Press enter to put pants on");
             Console.ReadLine();
 
-            bus.Send(new PantsHaveBeenPutOnEvent { PantsColour = "Green", SagaId = sagaId });
+            bus.Publish(new PantsHaveBeenPutOnEvent { PantsColour = "Green", SagaId = sagaId });
 
             Console.WriteLine("Pants on. Press enter to eat breakfast");
             Console.ReadLine();
 
-            bus.Send(new BreakfastFinishedEvent { BreakfastType= "Full English", SagaId = sagaId });
+            bus.Publish(new BreakfastFinishedEvent { BreakfastType= "Full English", SagaId = sagaId });
 
             Console.ReadLine();
         }

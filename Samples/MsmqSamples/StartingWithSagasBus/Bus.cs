@@ -253,5 +253,10 @@ namespace StartingWithSagasBus
                 }
             }
         }
+
+        public void Publish<T>(T message)
+        {
+            Send(message);
+        }
     }
 }

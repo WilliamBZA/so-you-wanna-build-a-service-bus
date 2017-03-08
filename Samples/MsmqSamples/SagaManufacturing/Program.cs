@@ -41,7 +41,7 @@ namespace SagaOldMan
 
             Console.WriteLine("Sword is ready!");
 
-            _bus.Send(new SwordPreparedEvent { SagaId = message.SagaId });
+            _bus.Publish(new SwordPreparedEvent { SagaId = message.SagaId });
         }
     }
 }

@@ -47,7 +47,7 @@ namespace SagaBadGuy
 
             Console.WriteLine("Princess has been kidnapped. She's fiesty :)");
 
-            _bus.Send(new PrincessKidnappedEvent { });
+            _bus.Publish(new PrincessKidnappedEvent { });
         }
 
         public void Handle(PutPrincessBackCommand message)

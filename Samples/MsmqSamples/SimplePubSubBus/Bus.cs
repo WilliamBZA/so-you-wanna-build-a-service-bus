@@ -188,5 +188,10 @@ namespace SimplePubSubBus
                 _incomingQueue = null;
             }
         }
+
+        public void Publish<T>(T message)
+        {
+            Send(message);
+        }
     }
 }

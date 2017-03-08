@@ -21,8 +21,8 @@ namespace SimplePubSubSend
             Console.WriteLine("Press enter to send messages");
             Console.ReadLine();
 
-            bus.Send(new PantsHaveBeenPutOnEvent { PantsColour = "Green", ManufactureDate = DateTime.Now.AddMonths(-1) });
-            bus.Send(new BreakfastFinishedEvent { BreakfastType = "Full English", NumberOfCoffees = 5, FinishByWhen = DateTime.Now.AddHours(1) });
+            bus.Publish(new PantsHaveBeenPutOnEvent { PantsColour = "Green", ManufactureDate = DateTime.Now.AddMonths(-1) });
+            bus.Publish(new BreakfastFinishedEvent { BreakfastType = "Full English", NumberOfCoffees = 5, FinishByWhen = DateTime.Now.AddHours(1) });
 
             Console.WriteLine("Messages sent!");
 
