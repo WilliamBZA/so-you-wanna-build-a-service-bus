@@ -34,8 +34,8 @@ namespace SimpleReceive
             var message = queue.EndReceive(e.AsyncResult);
             message.Formatter = new XmlMessageFormatter(new Type[] { typeof(SimpleMessage) });
 
-            var recievedMessage = (SimpleMessage)message.Body;
-            processMessage(recievedMessage);
+            var receivedMessage = (SimpleMessage)message.Body;
+            processMessage(receivedMessage);
         }
     }
 }
