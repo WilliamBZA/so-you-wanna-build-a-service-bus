@@ -39,8 +39,8 @@ namespace TransactionalReceive
                 var message = queue.Receive(tx);
                 message.Formatter = new XmlMessageFormatter(new Type[] { typeof(SimpleMessage) });
 
-                var recievedMessage = (SimpleMessage)message.Body;
-                processMessage(recievedMessage);
+                var receivedMessage = (SimpleMessage)message.Body;
+                processMessage(receivedMessage);
 
                 tx.Commit();
             }
