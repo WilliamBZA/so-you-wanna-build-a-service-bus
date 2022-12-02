@@ -39,8 +39,8 @@ namespace TypeBasedBreakfast
                 var message = queue.Receive(tx);
                 message.Formatter = new XmlMessageFormatter(new Type[] { typeof(HaveBreakfastCommand) });
 
-                var recievedMessage = (HaveBreakfastCommand)message.Body;
-                processMessage(recievedMessage);
+                var receivedMessage = (HaveBreakfastCommand)message.Body;
+                processMessage(receivedMessage);
 
                 tx.Commit();
             }
