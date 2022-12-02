@@ -39,8 +39,8 @@ namespace TypeBasedPantsCommand
                 var message = queue.Receive(tx);
                 message.Formatter = new XmlMessageFormatter(new Type[] { typeof(PutPantsOnCommand) });
 
-                var recievedMessage = (PutPantsOnCommand)message.Body;
-                processMessage(recievedMessage);
+                var receivedMessage = (PutPantsOnCommand)message.Body;
+                processMessage(receivedMessage);
 
                 tx.Commit();
             }
